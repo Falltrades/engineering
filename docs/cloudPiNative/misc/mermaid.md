@@ -9,9 +9,9 @@ sequenceDiagram
 
     %% Manual actions
     Dev->>Socle: Push feature / fix branch
-    Dev->>Socle: Open PR to develop
+    Dev->>Socle: Open PR to main
     Dev->>Socle: Approve/Merge
-    Socle->>CI: PR merged to develop
+    Socle->>CI: PR merged to main
 
     %% Automatic actions
     CI-->>Values: Generate PR (DEV)
@@ -20,9 +20,9 @@ sequenceDiagram
     Clusters-->>Tests: Run non-regression tests
 
     alt Tests OK (DEV)
-        CI-->>Socle: Open PR develop → main
+        CI-->>Socle: Open release PR to main
         Dev->>Socle: Approve/Merge
-        Socle->>CI: PR merge to main
+        Socle->>CI: PR merged to main
         CI-->>Socle: tag created
         CI-->>Values: Generate PR (PROD)
         Dev->>Values: Approve/Merge
